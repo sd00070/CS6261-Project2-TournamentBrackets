@@ -13,14 +13,15 @@
         <h3>Match {{ i + 1 }}</h3>
 
         <div>
-          <input type="radio" id="match{{ i }}_player1" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=0"
-            checked>
+          <input type="radio" id="match{{ i }}_player1" name="match{{ i }}" value="{{ matches[i].player1 }}"
+            [(ngModel)]="matches[i].winner">
 
           <label for="match{{ i }}_player1">{{ matches[i].player1 }}</label>
         </div>
 
         <div>
-          <input type="radio" id="match{{ i }}_player2" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=1">
+          <input type="radio" id="match{{ i }}_player2" name="match{{ i }}" value="{{ matches[i].player2 }}"
+            [(ngModel)]="matches[i].winner">
 
           <label for="match{{ i }}_player2">{{ matches[i].player2 }}</label>
         </div>

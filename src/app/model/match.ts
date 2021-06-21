@@ -1,11 +1,11 @@
 export class Match {
-    public winnerIndex: number
+    public winner: string
 
     constructor(
         public player1: string,
         public player2: string,
     ) {
-        this.winnerIndex = 0
+        this.winner = this.player1
     }
 
     static partition(roster: string[]): Match[] {
