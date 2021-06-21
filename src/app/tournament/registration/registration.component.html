@@ -2,7 +2,7 @@
 
 <p *ngIf="message">{{ message }}</p>
 
-<form #registrationForm="ngForm" (ngSubmit)="registerContestants()">
+<form (ngSubmit)="registerContestants()">
   <div class="player-names">
     <ul>
       <li *ngFor="let player of players; index as i; trackBy: trackByIndex">
