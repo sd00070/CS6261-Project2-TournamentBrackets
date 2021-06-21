@@ -1,1 +1,21 @@
-<p>registration works!</p>
+<h2>Register Players</h2>
+
+<form #registrationForm="ngForm">
+  <div class="player-names">
+    <ul>
+      <li *ngFor="let player of players; index as i; trackBy: trackByIndex">
+        <input name="player{{i}}" type="text" [(ngModel)]="players[i]">
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <button type="button" (click)="registerContestants()">Register Contestants</button>
+  </div>
+
+  <div>
+    <button type="button">Autofill 2 Contestants</button>
+    <button type="button">Autofill 4 Contestants</button>
+    <button type="button">Autofill 8 Contestants</button>
+  </div>
+</form>
