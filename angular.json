@@ -26,6 +26,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "progress": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -94,6 +95,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
+            "progress": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
