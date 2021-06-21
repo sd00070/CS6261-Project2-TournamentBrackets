@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BracketsComponent } from './tournament/brackets/brackets.component';
-import { HelloComponent } from './tournament/hello/hello.component';
-import { RegistrationComponent } from './tournament/registration/registration.component';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { BracketsComponent } from './tournament/brackets/brackets.component'
+import { HelloComponent } from './tournament/hello/hello.component'
+import { RegistrationComponent } from './tournament/registration/registration.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/hello', pathMatch: 'full' },
@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'brackets', component: BracketsComponent },
   { path: '**', redirectTo: '/hello' }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
