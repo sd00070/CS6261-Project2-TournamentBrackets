@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core'
 })
 export class RosterService {
 
-  private contestants: string[] = []
+  // TODO: change back to empty array
+  private contestants: string[] = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6', 'player7', 'player8']
+  // private contestants: string[] = []
 
   constructor() { }
 
