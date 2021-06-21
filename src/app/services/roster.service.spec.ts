@@ -10,6 +10,38 @@ describe('RosterService', () => {
     rosterService = TestBed.inject(RosterService)
   })
 
+  describe('getContestants', () => {
+    it('should return the array of contestants', () => {
+      expect(rosterService.getContestants()).toEqual([])
+    })
+  })
+
+  describe('hasContestants', () => {
+    it('should return false when the array is empty', () => {
+      expect(rosterService.hasContestants()).toBeFalse()
+    })
+
+    it('should return true when the array contains values', () => {
+      rosterService.addContestant('Jack')
+      rosterService.addContestant('Kate')
+      expect(rosterService.hasContestants()).toBeTrue()
+    })
+  })
+
+  describe('static containsString', () => {
+    it('should return false if the array is empty', () => {
+      expect(RosterService.containsString('hello', [])).toBeFalse()
+    })
+
+    it('should return false if the string is not in the array', () => {
+      expect(RosterService.containsString('hello', ['world', '!'])).toBeFalse()
+    })
+
+    it('should return true if the string is in the array', () => {
+      expect(RosterService.containsString('hello', ['hello', 'world', '!'])).toBeTrue()
+    })
+  })
+
   describe('addContestant', () => {
     it('should not allow duplicate names', () => {
       rosterService.addContestant('Bill')
@@ -48,30 +80,51 @@ describe('RosterService', () => {
     })
   })
 
+  describe('static throwErrorIfPlayerIsInvalid', () => {
+    it('should throw an error if the player is null', () => [
+      expect(() => { RosterService.throwErrorIfPlayerIsInvalid(null, []) }).toThrow(new Error('Name should not be null'))
+    ])
 
-  describe('hasContestants', () => {
-    it('should return false when the array is empty', () => {
-      expect(rosterService.hasContestants()).toBeFalse()
+    it('should throw an error if the player is an empty string', () => {
+      expect(() => { RosterService.throwErrorIfPlayerIsInvalid('', []) }).toThrow(new Error('Name should not be empty'))
     })
 
-    it('should return true when the array contains values', () => {
-      rosterService.addContestant('Jack')
-      rosterService.addContestant('Kate')
-      expect(rosterService.hasContestants()).toBeTrue()
+    it('should throw an error if the player is in the roster already', () => {
+      expect(() => { RosterService.throwErrorIfPlayerIsInvalid('Doug', ['Doug']) }).toThrow(new Error('Cannot add duplicate name'))
+    })
+
+    it('should not throw an error if the user is valid', () => {
+      const sturdyFunction = () => { RosterService.throwErrorIfPlayerIsInvalid('James', ['Alec']) }
+
+      expect(sturdyFunction).not.toThrow(new Error('Name should not be null'))
+      expect(sturdyFunction).not.toThrow(new Error('Name should not be empty'))
+      expect(sturdyFunction).not.toThrow(new Error('Cannot add duplicate name'))
     })
   })
 
-  describe('static containsString', () => {
-    it('should return false if the array is empty', () => {
-      expect(RosterService.containsString('hello', [])).toBeFalse()
+  describe('static throwErrorIfRosterIsInvalidLength', () => {
+    it('should throw an error if the array is empty', () => {
+      expect(() => { RosterService.throwErrorIfRosterIsInvalidLength([]) }).toThrow(new Error('Must contain 2, 4, or 8 players'))
     })
 
-    it('should return false if the string is not in the array', () => {
-      expect(RosterService.containsString('hello', ['world', '!'])).toBeFalse()
+    it('should throw an error if the array is not 2, 4, or 8 long', () => {
+      let testRoster = ['one']
+      expect(() => { RosterService.throwErrorIfRosterIsInvalidLength(testRoster) }).toThrow(new Error('Must contain 2, 4, or 8 players'))
     })
 
-    it('should return true if the string is in the array', () => {
-      expect(RosterService.containsString('hello', ['hello', 'world', '!'])).toBeTrue()
+    it('should not throw an error if it has exactly 2 players', () => {
+      let testRoster = ['one', 'two']
+      expect(() => { RosterService.throwErrorIfRosterIsInvalidLength(testRoster) }).not.toThrow(new Error('Must contain 2, 4, or 8 players'))
+    })
+
+    it('should not throw an error if it has exactly 4 players', () => {
+      let testRoster = ['one', 'two', 'three', 'four']
+      expect(() => { RosterService.throwErrorIfRosterIsInvalidLength(testRoster) }).not.toThrow(new Error('Must contain 2, 4, or 8 players'))
+    })
+
+    it('should not throw an error if it has exactly 8 players', () => {
+      let testRoster = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
+      expect(() => { RosterService.throwErrorIfRosterIsInvalidLength(testRoster) }).not.toThrow(new Error('Must contain 2, 4, or 8 players'))
     })
   })
 
