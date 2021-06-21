@@ -19,17 +19,28 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Ignoring empty values, adds the valid players to the RosterService.
+   */
   registerContestants() {
-    console.log(this.players)
+    try {
+      let trimmedPlayerList = this.players.filter(maybeEmptyString => maybeEmptyString !== '')
 
-    // const validPlayerCount = this.players.reduce((count: number, player: string) => {
-    //   if (player === '') return count
-    //   return count + 1
-    // }, 0)
+      let validPlayers = trimmedPlayerList.filter((player: string, index: number): boolean => {
+        RosterService.throwErrorIfPlayerIsInvalid(player, trimmedPlayerList.slice(0, index).concat(trimmedPlayerList.slice(index + 1)))
+        return true
+      })
 
-    // if (validPlayerCount !== 2 && validPlayerCount !== 4 && validPlayerCount !== 8) return
+      RosterService.throwErrorIfRosterIsInvalidLength(validPlayers)
 
-    // this.players.forEach(this.rosterService.addContestant)
+      this.rosterService.clearRoster()
+
+      validPlayers.forEach((validPlayer: string) => this.rosterService.addContestant(validPlayer))
+
+      this.message = this.rosterService.getContestants().join(', ')
+    } catch (error) {
+      this.message = error.message
+    }
   }
 
   trackByIndex(index: number, _item: any): number {
