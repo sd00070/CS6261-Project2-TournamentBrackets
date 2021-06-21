@@ -13,6 +13,8 @@ export class BracketsComponent implements OnInit {
 
   public matches: Match[] = []
 
+  public winner: string = ''
+
   constructor(private rosterService: RosterService) { }
 
   hasMatches(): boolean {

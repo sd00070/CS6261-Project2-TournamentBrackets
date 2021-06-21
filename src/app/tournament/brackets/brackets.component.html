@@ -1,33 +1,41 @@
-<div *ngIf="hasMatches()">
+<div *ngIf="winner">
   <h2>Round {{ roundNumber }}</h2>
 
-  <form #bracketsForm="ngForm">
-    <div *ngFor="let match of matches; index as i">
-      <h3>Match {{ i + 1 }}</h3>
-
-      <div>
-        <input type="radio" id="match{{ i }}_player1" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=0"
-          checked>
-
-        <label for="match{{ i }}_player1">{{ matches[i].player1 }}</label>
-      </div>
-
-      <div>
-        <input type="radio" id="match{{ i }}_player2" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=1">
-
-        <label for="match{{ i }}_player2">{{ matches[i].player2 }}</label>
-      </div>
-    </div>
-
-    <button type="button" (click)="completeRound()">Complete Round</button>
-  </form>
-
+  <strong>Winner: {{ winner }}</strong>
 </div>
 
-<div *ngIf="!hasMatches()">
-  <h2>Brackets</h2>
-  <p>Please register players on the <a routerLink="/registration" routerLinkActive="active">Registration</a> page.</p>
+<div *ngIf="!winner">
+  <div *ngIf="hasMatches()">
+    <h2>Round {{ roundNumber }}</h2>
+
+    <form #bracketsForm="ngForm">
+      <div *ngFor="let match of matches; index as i">
+        <h3>Match {{ i + 1 }}</h3>
+
+        <div>
+          <input type="radio" id="match{{ i }}_player1" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=0"
+            checked>
+
+          <label for="match{{ i }}_player1">{{ matches[i].player1 }}</label>
+        </div>
+
+        <div>
+          <input type="radio" id="match{{ i }}_player2" name="match{{ i }}" (ngModelChange)="matches[i].winnerIndex=1">
+
+          <label for="match{{ i }}_player2">{{ matches[i].player2 }}</label>
+        </div>
+      </div>
+
+      <button type="button" (click)="completeRound()" *ngIf="hasMatches()">Complete Round</button>
+    </form>
+  </div>
+
+  <div *ngIf="!hasMatches()">
+    <h2>Brackets</h2>
+
+    <p>Please register players on the <a routerLink="/registration" routerLinkActive="active">Registration</a> page.</p>
+  </div>
 </div>
 
-
-<p>{{ matches | json }}</p>
+<p>Matches: {{ matches | json }}</p>
+<p>Winner: {{ winner }} </p>
