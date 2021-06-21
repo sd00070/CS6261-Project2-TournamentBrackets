@@ -1,1 +1,16 @@
-<p>brackets works!</p>
+<h2>Brackets</h2>
+
+<div *ngIf="hasContestants()">
+  <h3>Round {{ roundNumber }}</h3>
+
+  <div *ngFor="let contestant of contestants; index as i">
+    <input type="radio" id="contestant{{ i }}" name="contestant">
+    <label for="contestant{{ i }}">{{ contestants[i] }}</label>
+  </div>
+
+  <button type="button">Complete Round</button>
+</div>
+
+<div *ngIf="!hasContestants()">
+  <p>Please register players on the <a routerLink="/registration" routerLinkActive="active">Registration</a> page.</p>
+</div>
