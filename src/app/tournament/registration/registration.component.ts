@@ -46,4 +46,31 @@ export class RegistrationComponent implements OnInit {
   trackByIndex(index: number, _item: any): number {
     return index
   }
+
+  autofill(count: number): void {
+    let sampleSet = [
+      'Spencer',
+      'Jack',
+      'Drew',
+      'Michael',
+      'Carrie',
+      'Brooke',
+      'Kate',
+      'Paige',
+      'Jeff',
+      'Billy',
+      'Walt',
+      'Shawn',
+      'Ben',
+      'Adam',
+      'Alana',
+      'Rainie'
+    ]
+
+    let randomPlayers = (sampleSet.sort((_a: string, _b: string) => Math.random() > 0.5 ? -1 : 1)).slice(0, count)
+
+    this.players = new Array(8).fill('')
+
+    this.players.splice(0, count, ...randomPlayers)
+  }
 }
