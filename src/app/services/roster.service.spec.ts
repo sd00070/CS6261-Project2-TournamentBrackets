@@ -75,42 +75,6 @@ describe('RosterService', () => {
     })
   })
 
-  describe('containsContestant', () => {
-    it('should return false if the contestant list is empty', () => {
-      expect(rosterService.containsContestant('William')).toBeFalse()
-    })
-
-    it('should return false if the list does not contain the given name', () => {
-      rosterService.addContestant('Nathan')
-      expect(rosterService.containsContestant('Michael')).toBeFalse()
-    })
-
-    it('should return true if it contains the contestant', () => {
-      rosterService.addContestant('Jeff')
-      expect(rosterService.containsContestant('Jeff')).toBeTrue()
-    })
-  })
-
-  describe('isValidPlayer', () => {
-    it('should return false if the given player is null', () => {
-      expect(rosterService.isValidPlayer(null)).toBeFalse()
-    })
-
-    it('should return false if the given value is an empty string', () => {
-      expect(rosterService.isValidPlayer('')).toBeFalse()
-    })
-
-    it('should return false if the name is already in the list', () => {
-      rosterService.addContestant('Darryl')
-      expect(rosterService.isValidPlayer('Darryl')).toBeFalse()
-    })
-
-    it('should return true if and only if the value is a non-null/-empty string not in the list', () => {
-      rosterService.addContestant('Tarzan')
-      expect(rosterService.isValidPlayer('Jane')).toBeTrue()
-    })
-  })
-
   describe('clearRoster', () => {
     it('should set the roster to an empty array', () => {
       rosterService.addContestant('Sonic')
