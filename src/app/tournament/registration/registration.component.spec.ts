@@ -86,5 +86,7 @@ describe('RegistrationComponent', () => {
       component.registerContestants()
       expect(component.rosterService.getContestants()).toEqual([])
     })
+
+    // TODO: test message change
   })
 })
