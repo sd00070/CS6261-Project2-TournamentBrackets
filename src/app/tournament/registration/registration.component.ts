@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   public message: string = ''
 
   constructor(
-    private rosterService: RosterService,
+    public rosterService: RosterService,
   ) { }
 
   ngOnInit(): void {
