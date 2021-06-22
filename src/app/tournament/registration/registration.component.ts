@@ -47,8 +47,8 @@ export class RegistrationComponent implements OnInit {
     return index
   }
 
-  autofill(count: number): void {
-    let sampleSet = [
+  autofill(count: number, sampleSet?: string[]): void {
+    sampleSet = sampleSet || [
       'Spencer',
       'Jack',
       'Drew',
