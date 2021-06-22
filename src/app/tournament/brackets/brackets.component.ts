@@ -17,12 +17,10 @@ export class BracketsComponent implements OnInit {
 
   constructor(private rosterService: RosterService) { }
 
-  // TODO: test this method
   hasMatches(): boolean {
     return this.matches.length > 0
   }
 
-  // TODO: test this method
   ngOnInit(): void {
     this.matches = Match.partition(this.rosterService.getContestants())
   }

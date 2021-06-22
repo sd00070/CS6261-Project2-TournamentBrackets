@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { Match } from 'src/app/model/match'
 
 import { BracketsComponent } from './brackets.component'
 
@@ -20,5 +21,21 @@ describe('BracketsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('should start with an empty match list', () => {
+    expect(component.matches).toEqual([])
+  })
+
+  describe('hasMatches', () => {
+    it('should return true if there is at least one match', () => {
+      component.matches = [new Match('one', 'two')]
+      expect(component.hasMatches()).toBeTrue()
+    })
+
+    it('should return false if the matches list is empty', () => {
+      component.matches = []
+      expect(component.hasMatches()).toBeFalse()
+    })
   })
 })
