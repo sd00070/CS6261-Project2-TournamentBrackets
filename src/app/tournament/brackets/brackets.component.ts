@@ -25,7 +25,6 @@ export class BracketsComponent implements OnInit {
     this.matches = Match.partition(this.rosterService.getContestants())
   }
 
-  // TODO: test this method
   completeRound(): void {
     let winners: string[] = this.matches.map((match: Match) => match.winner)
 
