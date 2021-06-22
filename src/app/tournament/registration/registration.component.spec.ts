@@ -31,12 +31,10 @@ describe('RegistrationComponent', () => {
   })
 
   it('should start with player list of length 8', () => {
-    expect(component).toBeTruthy()
     expect(component.players.length).toBe(8)
   })
 
   it('should start with all players set to empty string', () => {
-    expect(component).toBeTruthy()
     component.players.forEach((player: string) => expect(player).toEqual(''))
   })
 
