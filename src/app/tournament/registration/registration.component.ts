@@ -16,8 +16,7 @@ export class RegistrationComponent implements OnInit {
     public rosterService: RosterService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   /**
    * Ignoring empty values, adds the valid players to the RosterService.
@@ -43,10 +42,12 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
+  // TODO: test me
   trackByIndex(index: number, _item: any): number {
     return index
   }
 
+  // TODO: test me
   autofill(count: number, sampleSet?: string[]): void {
     sampleSet = sampleSet || [
       'Spencer',
