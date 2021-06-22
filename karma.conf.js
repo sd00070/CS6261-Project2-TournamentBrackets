@@ -37,7 +37,7 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,  // TODO: remember to flip me before submission
+    autoWatch: false,
     browsers: ['FirefoxHeadless'],
     customLaunchers: {
       'FirefoxHeadless': {
@@ -45,7 +45,7 @@ module.exports = function (config) {
         flags: ['-headless',],
       }
     },
-    singleRun: false, // TODO: remember to flip me before submission
+    singleRun: true,
     restartOnFileChange: true
   });
 };
