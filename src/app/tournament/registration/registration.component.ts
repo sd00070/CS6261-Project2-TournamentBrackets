@@ -42,7 +42,6 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  // TODO: test me
   trackByIndex(index: number, _item: any): number {
     return index
   }
