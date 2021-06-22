@@ -111,4 +111,11 @@ describe('RegistrationComponent', () => {
       expect(component.message).toEqual('Cannot add duplicate name')
     })
   })
+
+  describe('trackByIndex', () => {
+    it('should return the first argument, ignoring the second', () => {
+      expect(component.trackByIndex(0, 'ignore me')).toBe(0)
+      expect(component.trackByIndex(18, 'me too')).toBe(18)
+    })
+  })
 })
