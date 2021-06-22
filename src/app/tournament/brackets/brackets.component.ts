@@ -26,6 +26,15 @@ export class BracketsComponent implements OnInit {
   }
 
   completeRound(): void {
+    let winners: string[] = this.matches.map((match: Match) => match.winner)
+
+    if (winners.length === 1) {
+      this.winner = winners[0]
+      return
+    }
+
+    this.matches = Match.partition(winners)
+
     this.roundNumber++
   }
 }
