@@ -46,7 +46,6 @@ export class RegistrationComponent implements OnInit {
     return index
   }
 
-  // TODO: test me
   autofill(count: number, sampleSet?: string[]): void {
     sampleSet = sampleSet || [
       'Spencer',

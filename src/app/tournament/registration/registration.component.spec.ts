@@ -118,4 +118,28 @@ describe('RegistrationComponent', () => {
       expect(component.trackByIndex(18, 'me too')).toBe(18)
     })
   })
+
+  describe('autofill', () => {
+    it('should fill the players with randomly selected names', () => {
+      component.autofill(2, ['a', 'b'])
+      expect(component.players.sort()).toEqual(['', '', '', '', '', '', 'a', 'b'])
+
+      component.autofill(4, ['a', 'b', 'c', 'd'])
+      expect(component.players.sort()).toEqual(['', '', '', '', 'a', 'b', 'c', 'd'])
+
+      component.autofill(8, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
+      expect(component.players.sort()).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
+    })
+
+    it('should fill the rest of players with empty strings', () => {
+      component.autofill(2)
+      expect(component.players.slice(2)).toEqual(new Array(6).fill(''))
+
+      component.autofill(4)
+      expect(component.players.slice(4)).toEqual(new Array(4).fill(''))
+
+      component.autofill(8)
+      component.players.every((value: string) => expect(value).not.toEqual(''))
+    })
+  })
 })
