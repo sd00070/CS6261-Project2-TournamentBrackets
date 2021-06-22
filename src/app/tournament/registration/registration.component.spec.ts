@@ -92,6 +92,21 @@ describe('RegistrationComponent', () => {
       expect(rosterService.getContestants()).toEqual([])
     })
 
-    // TODO: test message change
+    it('should change the message to the appropriate message on an error', () => {
+      expect(component.message).toEqual('')
+
+      component.players = []
+      component.registerContestants()
+      expect(component.message).toEqual('Must contain 2, 4, or 8 players')
+
+      component.players = ['1']
+      component.registerContestants()
+      expect(component.message).toEqual('Must contain 2, 4, or 8 players')
+
+
+      component.players = ['1', '1']
+      component.registerContestants()
+      expect(component.message).toEqual('Cannot add duplicate name')
+    })
   })
 })
