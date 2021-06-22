@@ -40,6 +40,10 @@ describe('RegistrationComponent', () => {
     component.players.forEach((player: string) => expect(player).toEqual(''))
   })
 
+  it('should start with an empty message', () => {
+    expect(component.message).toEqual('')
+  })
+
   describe('registerContestants', () => {
     it('should not change the roster if all players are empty', () => {
       component.registerContestants()
