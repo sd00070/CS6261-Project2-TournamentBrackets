@@ -58,7 +58,7 @@ describe('Match', () => {
     })
 
     it('when passed 4 players, should create an array of 2 Matches from those players', () => {
-      expect(Match.partition(['Mike', 'Don', 'Leo', 'Ralfie'])).toEqual([new Match('Mike', 'Don'), new Match('Leo', 'Ralfie')])
+      expect(Match.partition(['Mike', 'Don', 'Leo', 'Ralphie'])).toEqual([new Match('Mike', 'Don'), new Match('Leo', 'Ralphie')])
     })
 
     it('should throw an error if the number of players is not even', () => {
