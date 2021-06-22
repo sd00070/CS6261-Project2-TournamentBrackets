@@ -21,7 +21,6 @@ export class BracketsComponent implements OnInit {
     return this.matches.length > 0
   }
 
-  // TODO: test this method
   ngOnInit(): void {
     this.matches = Match.partition(this.rosterService.getContestants())
   }
